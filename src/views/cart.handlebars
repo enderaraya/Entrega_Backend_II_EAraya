@@ -1,0 +1,62 @@
+<main class="cart">
+    <div class="promo-section">
+        <p>¡Aprovecha nuestras ofertas especiales en productos seleccionados!</p>
+        <a class="btn" href="/offers">Ver Ofertas</a>
+    </div>
+
+    <h1>Carrito de Compras</h1>
+
+    {{#if cart.products.length}}
+    <div class="cart-container">
+        <div class="cart-summary">
+            <h2>Resumen del Carrito</h2>
+            <p>Contenido del carrito:</p>
+            <ul>
+                {{#each cart.products}}
+                <li>{{this.product.title}} x{{this.quantity}} - ${{this.quantity * this.product.price}}</li>
+                {{/each}}
+            </ul>
+        </div>
+
+        {{#each cart.products}}
+        <div class="cart-item">
+
+            <img src="{{this.product.img}}" alt="Imagen de {{this.product.title}}" width="100">
+            <h2>{{this.product.title}}</h2>
+            <p>{{this.product.description}}</p>
+            <p>Precio: ${{this.product.price}}</p>
+            <p>Cantidad: {{this.quantity}}</p>
+            <p>Total: ${{this.quantity * this.product.price}}</p>
+
+            <a class="btn" href="/product/{{this.product._id}}">Ver Detalles</a>
+        </div>
+        {{/each}}
+
+
+        <div class="discount-coupon">
+            <label for="coupon">Código de descuento:</label>
+            <input type="text" id="coupon" name="coupon" placeholder="Ingresa tu código aquí">
+            <button type="button" class="btn">Aplicar</button>
+        </div>
+    </div>
+
+    <div class="cart-total">
+        <h2>Total del Carrito: ${{totalPrice}}</h2>
+        <button class="btn">Proceder al Pago</button>
+    </div>
+
+    {{else}}
+    <div class="empty-cart">
+        <h2>El carrito está vacío.</h2>
+        <p>Agrega productos a tu carrito para comenzar a comprar.</p>
+        <a class="btn" href="/">Volver a la tienda</a>
+    </div>
+    {{/if}}
+
+
+    <footer class="footer">
+        <p>© 2024 Empresa X - Todos los derechos reservados.</p>
+        <a href="/contact">Contáctanos</a>
+        <a href="/privacy">Política de Privacidad</a>
+    </footer>
+</main>

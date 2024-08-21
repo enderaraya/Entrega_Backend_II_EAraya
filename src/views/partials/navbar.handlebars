@@ -1,0 +1,37 @@
+<nav class="navbar">
+    <div class="brand-logo">
+        <img src="" alt="Logo de la Empresa">
+        <h1>Mi Tienda</h1>
+    </div>
+
+
+    <ul class="ulnav">
+        <li><a href="/">Productos</a></li>
+
+        <li>
+            <!-- Formulario para consultar el carrito -->
+            <form class="inputCart" action="/carts/{{cid}}" method="get">
+                <button type="submit">Ver Carrito</button>
+                <label for="cid">Id del carrito:</label>
+                <input type="text" id="cid" name="cid"/>
+
+                <div class="cart-info">
+                    <p>Consulta tu carrito aquí.</p>
+                </div>
+            </form>
+        </li>
+        
+
+        <li><a href="/about">Sobre Nosotros</a></li>
+        <li><a href="/contact">Contacto</a></li>
+    </ul>
+
+
+    <div class="navbar-extra">
+        <p>Ofertas del Mes</p>
+        <ul>
+            <li><a href="/offers/sale1">Oferta 1</a></li>
+            <li><a href="/offers/sale2">Oferta 2</a></li>
+        </ul>
+    </div>
+</nav>

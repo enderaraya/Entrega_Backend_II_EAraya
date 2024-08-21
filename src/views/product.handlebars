@@ -1,0 +1,23 @@
+<main class="product-details">
+    <h1>Detalles del Producto</h1>
+
+    <div class="product-card">
+        <h2>{{product.title}}</h2>
+        <p>Categoría: {{product.category}}</p>
+        
+        <div>
+            <img class="product-img" src="{{#if product.img}}{{product.img}}{{else}}https://placehold.co/600x400?text=Hello+World{{/if}}">
+            <p>{{product.description}}</p>
+            <h3>Precio: ${{product.price}}</h3>
+            <p>Stock: {{product.stock}}</p>
+        </div>
+
+        <form action="/cart/{{cartId}}/product/{{product._id}}" method="post">
+            <label for="img">ID:</label> 
+            <input type="text" id="cartId" name="cartId" placeholder="Ingresa el id de tu carrito" required />
+            <button type="submit" class="btn">Agregar al Carrito</button>
+        </form>
+
+        <a class="btn" href="/">Volver</a>
+    </div>
+</main>

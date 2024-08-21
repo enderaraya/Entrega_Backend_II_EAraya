@@ -1,0 +1,71 @@
+<main class="home">
+    <div class="paginas">
+        {{#if hasPrevPage}}
+        <a class="btn" href="{{prevLink}}">⏪</a>
+        {{/if}}
+        <span>Página {{page}}</span>
+        {{#if hasNextPage}}
+        <a class="btn" href="{{nextLink}}">⏩</a>
+        {{/if}}
+    </div>
+
+    <form class="inputLimit" action="/" method="get">
+        <button type="submit">Consultar</button>
+        <input type="number" id="limit" name="limit" min="1" max="100" />
+        <label for="limit">Cantidad de productos a visualizar:</label>
+        <div class="extra-info">
+            <p>Opciones de filtro:</p>
+            <select name="category" id="category">
+                <option value="">Categoría</option>
+                <option value="electronics">Electrónica</option>
+                <option value="clothing">Ropa</option>
+                <option value="books">Libros</option>
+            </select>
+        </div>
+    </form>
+
+    <h1>Vista de Productos</h1>
+
+    <div class="promo-banner">
+        <p>¡No te pierdas nuestras ofertas especiales!</p>
+    </div>
+
+    <div class="card-container">
+        {{#if products.length}}
+        {{#each products}}
+        <div class="card">
+
+            <div class="product-info">
+                <h2>{{this.title}}</h2>
+                <p>{{this.description}}</p>
+                <img src="{{#if this.img}}{{this.img}}{{else}}https://placehold.co/267x400{{/if}}" alt="">
+                <div class="price-stock">
+                    <p>${{this.price}} - Stock: {{this.stock}}</p>
+                </div>
+
+
+                <a class="btn" href="/product/{{this._id}}">Ver Detalles</a>
+            </div>
+
+
+            <div class="product-comments">
+                <p>Comentarios:</p>
+                <ul>
+                    <li>¡Gran producto!</li>
+                    <li>Excelente calidad.</li>
+                    <li>Recomiendo este producto.</li>
+                </ul>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <h2>No hay productos para mostrar!</h2>
+        {{/if}}
+    </div>
+
+
+    <footer class="footer">
+        <p>© 2024 Empresa X - Todos los derechos reservados.</p>
+        <a href="/contact">Contáctanos</a>
+    </footer>
+</main>
